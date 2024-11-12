@@ -119,13 +119,31 @@ document.addEventListener("mousemove", (event) => {
             const eyeCenterX = eyeRect.left + eyeRect.width / 2;
             const eyeCenterY = eyeRect.top + eyeRect.height / 2;
             const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
-            const maxOffset = 15;
+            const maxOffset = eyeRect.width / 4; // Смещение адаптируется под размер глаза
             const pupilX = Math.cos(angle) * maxOffset;
             const pupilY = Math.sin(angle) * maxOffset;
             pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
         });
     });
 });
+
+// Адаптация на мобильных устройствах (используем событие touchmove)
+document.addEventListener("touchmove", (event) => {
+    const touch = event.touches[0];
+    const eyes = document.querySelectorAll(".eye");
+    eyes.forEach((eye) => {
+        const pupil = eye.querySelector(".pupil");
+        const eyeRect = eye.getBoundingClientRect();
+        const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+        const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+        const angle = Math.atan2(touch.clientY - eyeCenterY, touch.clientX - eyeCenterX);
+        const maxOffset = eyeRect.width / 4; // Смещение адаптируется под размер глаза
+        const pupilX = Math.cos(angle) * maxOffset;
+        const pupilY = Math.sin(angle) * maxOffset;
+        pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+    });
+});
+
 
 
 
