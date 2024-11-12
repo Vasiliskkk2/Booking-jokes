@@ -1,4 +1,4 @@
-/* Основные стили */
+/* Основные стили, сброс отступов и внутренних полей, установка шрифта */
 * {
     margin: 0;
     padding: 0;
@@ -6,6 +6,7 @@
     font-family: Arial, sans-serif;
 }
 
+/* Основной стиль для body: цвет текста, фон и плавная прокрутка */
 body {
     color: #FFFFFF;
     background-color: #2c2f33;
@@ -33,18 +34,21 @@ header {
     align-items: center;
 }
 
+/* Стили логотипа */
 .logo h1 {
     font-size: 24px;
     font-weight: bold;
     color: #ffdd57;
 }
 
+/* Стили для навигационного меню */
 nav ul {
     list-style-type: none;
     display: flex;
     gap: 20px;
 }
 
+/* Ссылки в меню навигации */
 nav ul li a {
     text-decoration: none;
     color: white;
@@ -54,12 +58,13 @@ nav ul li a {
     transition: background-color 0.3s;
 }
 
+/* Эффект при наведении на ссылки */
 nav ul li a:hover {
     background-color: #ffdd57;
     color: #23272a;
 }
 
-/* Отступ для изображения под фиксированным хедером */
+/* Стили основного изображения под хедером */
 .hero-image {
     background-image: url("/static/images/boja.jpg");
     background-size: cover;
@@ -74,17 +79,17 @@ nav ul li a:hover {
     align-items: center;
 }
 
-/* Контейнер для глаз */
+/* Контейнер для глаз - перемещать глаза можно путем изменения значений top и left */
 .eyes-container {
     display: flex;
     gap: 47px;
     position: absolute;
-    top: 33%;
-    left: 51%;
-    transform: translate(-52%, -49%);
+    top: 33%; /* Установка вертикальной позиции глаз */
+    left: 51%; /* Установка горизонтальной позиции глаз */
+    transform: translate(-52%, -49%); /* Центрирование относительно заданных позиций */
 }
 
-/* Глаза */
+/* Стиль для самих глаз */
 .eye {
     width: 80px;
     height: 80px;
@@ -97,17 +102,17 @@ nav ul li a:hover {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-/* Зрачки */
+/* Стиль для зрачков */
 .pupil {
     width: 30px;
     height: 30px;
     background-color: #000;
     border-radius: 50%;
     position: absolute;
-    transition: transform 0.05s ease-out;
+    transition: transform 0.05s ease-out; /* Плавное движение зрачков */
 }
 
-/* Стили для контента */
+/* Стили для основного контейнера контента */
 .content-container {
     padding: 25px;
     background-color: #40444b;
@@ -119,22 +124,26 @@ nav ul li a:hover {
     line-height: 1.6;
 }
 
+/* Заголовки внутри контента */
 h2, h3 {
     color: #ffdd57;
     margin-bottom: 10px;
 }
 
+/* Параграфы внутри контента */
 p {
     margin-bottom: 15px;
     font-size: 16px;
     color: #e2e2e2;
 }
 
+/* Стили для ненумерованных списков */
 ul {
     padding-left: 20px;
     margin-top: 10px;
 }
 
+/* Элементы списка */
 ul li {
     margin-bottom: 8px;
     font-size: 16px;
@@ -149,18 +158,19 @@ ul li {
     margin: 20px 0;
 }
 
-/* Стили для окна "Особенности Мем Токена" */
+/* Стили для секции "Особенности" */
 #features {
     text-align: center;
 }
 
+/* Заголовок секции "Особенности" */
 #features h2 {
     font-size: 24px;
     color: #ffdd57;
     margin-bottom: 20px;
 }
 
-/* Стили для окна анекдота */
+/* Стили для контейнера анекдота */
 .joke-container {
     background-color: #40444b;
     padding: 20px;
@@ -173,6 +183,7 @@ ul li {
     color: #ffffff;
 }
 
+/* Заголовок внутри контейнера анекдота */
 .joke-container h3 {
     margin-bottom: 15px;
     font-size: 20px;
@@ -197,6 +208,7 @@ ul li {
     margin-top: 15px;
 }
 
+/* Индивидуальные стили кнопок */
 .button-container button {
     padding: 10px 20px;
     font-size: 16px;
@@ -208,15 +220,17 @@ ul li {
     transition: background-color 0.3s, transform 0.1s ease-out;
 }
 
+/* Эффект при наведении на кнопки */
 .button-container button:hover {
     background-color: #5a6eb9;
 }
 
+/* Эффект при нажатии на кнопки */
 .button-container button:active {
     transform: scale(0.95);
 }
 
-/* Стили для окна Топ 10 шуток */
+/* Стили для контейнера топ-10 шуток */
 .top-jokes-container {
     padding: 20px;
     background-color: #40444b;
@@ -230,12 +244,14 @@ ul li {
     color: #ffffff;
 }
 
+/* Заголовок для топ-10 шуток */
 .top-jokes-container h2 {
     text-align: center;
     margin-bottom: 15px;
     color: #ffdd57;
 }
 
+/* Стили для списка топ-10 шуток */
 .top-jokes-list {
     padding-left: 0;
     font-size: 16px;
@@ -243,6 +259,7 @@ ul li {
     color: #ffffff;
 }
 
+/* Элементы списка топ-10 шуток */
 .top-jokes-list li {
     margin-bottom: 15px;
     padding: 15px;
@@ -252,12 +269,13 @@ ul li {
     transition: transform 0.2s ease;
 }
 
+/* Эффект при наведении на элементы списка */
 .top-jokes-list li:hover {
     transform: scale(1.02);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Стили для раздела Сообщества */
+/* Стили для футера сообщества */
 footer#community {
     background-color: #23272a;
     color: white;
@@ -266,12 +284,13 @@ footer#community {
     margin-top: 30px;
 }
 
+/* Контейнер для информации о сообществе */
 .community-container {
     max-width: 600px;
     margin: auto;
 }
 
-/* Responsive styles */
+/* Адаптивные стили для мобильных устройств */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
@@ -304,13 +323,15 @@ footer#community {
         width: 20px;
         height: 20px;
     }
+    /* Измените позицию глаз здесь для мобильных устройств, чтобы настроить отображение */
     .eyes-container {
         gap: 20px;
-        top: 45%;
+        top: 38%;
         left: 51%;
-        transform: translate(-52%, -49%);
+        transform: translate(-52%, -50%);
     }
 }
+
 
 
 
