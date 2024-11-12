@@ -326,7 +326,7 @@ footer#community {
     /* Измените позицию глаз здесь для мобильных устройств, чтобы настроить отображение */
     .eyes-container {
         gap: 20px;
-        top: 38%;
+        top: 35%;
         left: 51%;
         transform: translate(-52%, -50%);
     }
