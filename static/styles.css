@@ -306,8 +306,8 @@ footer#community {
     }
     .eyes-container {
         gap: 20px;
-        top: 41%;
-        left: 51%;
+        top: 45%;
+        left: 50%;
         transform: translate(-52%, -50%);
     }
 }
