@@ -297,8 +297,8 @@ footer#community {
 
     /* Адаптация глаз для мобильных устройств */
     .eye {
-        width: 15px;
-        height: 15px;
+        width: 30px;
+        height: 30px;
     }
     .pupil {
         width: 20px;
