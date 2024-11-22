@@ -6,19 +6,97 @@
     <title>Book of Jokes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <style>
-        /* Включены все ранее описанные адаптивные стили */
+        /* Основные стили для хедера */
+        header {
+            background-color: #23272a;
+            color: white;
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            height: 60px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffdd57;
+        }
+
+        /* Кнопка меню для мобильных */
+        .menu-toggle {
+            display: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+            background: none;
+            border: none;
+        }
+
+        /* Скрытое меню */
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            background-color: #23272a;
+            width: 100%;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin: 10px 0;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Для десктопов */
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #ffdd57;
+            color: #23272a;
+        }
+
+        /* Стили для адаптации */
         @media (max-width: 768px) {
-            .content-container {
-                width: 90%;
-                margin: 0 auto;
-                padding: 15px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            nav ul {
+                display: none; /* Скрываем меню на мобильных устройствах */
             }
-            .content-container h2, .content-container h3 {
-                font-size: 20px;
-            }
-            .content-container p, .content-container li {
-                font-size: 14px;
+
+            .menu-toggle {
+                display: block; /* Показываем кнопку меню */
             }
         }
     </style>
@@ -26,24 +104,34 @@
 <body>
     <!-- Хедер -->
     <header>
-        <div class="header-container">
-            <div class="logo">
-                <h1>Book of Jokes</h1>
-            </div>
-            <div class="menu-toggle" onclick="toggleMenu()">Меню</div>
-            <nav class="mobile-menu">
-                <ul>
-                    <li><a href="#about">О токене</a></li>
-                    <li><a href="#features">Особенности</a></li>
-                    <li><a href="#community">Сообщество</a></li>
-                    <li><a href="#top10">Топ 10 шуток</a></li>
-                    <li><a href="#buy">Купить</a></li>
-                </ul>
-            </nav>
+        <div class="logo">
+            <h1>Book of Jokes</h1>
         </div>
+        <!-- Кнопка меню -->
+        <button class="menu-toggle" onclick="toggleMenu()">Меню</button>
+        <!-- Навигация -->
+        <nav>
+            <ul>
+                <li><a href="#about">О токене</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#community">Сообщество</a></li>
+                <li><a href="#top10">Топ 10 шуток</a></li>
+                <li><a href="#buy">Купить</a></li>
+            </ul>
+        </nav>
+        <!-- Мобильное меню -->
+        <nav class="mobile-menu">
+            <ul>
+                <li><a href="#about">О токене</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#community">Сообщество</a></li>
+                <li><a href="#top10">Топ 10 шуток</a></li>
+                <li><a href="#buy">Купить</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Основное изображение -->
+    <!-- Остальная структура страницы -->
     <div class="hero-image" style="background-image: url('https://raw.githubusercontent.com/Vasiliskkk2/bbjokes/refs/heads/main/static/images/boja.JPG');">
         <div class="eyes-container">
             <div class="eye" id="left-eye">
@@ -54,72 +142,22 @@
             </div>
         </div>
     </div>
-
-    <!-- Контейнер с контентом -->
     <div class="content-container">
         <section id="about">
             <h2>О Токене</h2>
-            <p><strong>Мем токен Книга Шуток</strong> — это криптовалютный проект, созданный для развлечения и популяризации интернет-шуток, анекдотов и мемов на блокчейне. Название обыгрывает слово "анекдоты", подчеркивая юмористическую направленность и акцент на локальной интернет-культуре. Эти токены объединяют пользователей вокруг весёлого контента, не претендуя на серьёзные технические инновации.</p>
-            <h3>Основные характеристики:</h3>
-            <ul>
-                <li><strong>Фокус на юморе:</strong> проект продвигается с помощью анекдотов, шуток и мемов, чтобы привлечь внимание и создать комьюнити.</li>
-                <li><strong>Сообщество и мем-культура:</strong> токен строит активное сообщество, участники которого вовлечены в обсуждения и распространение шуток.</li>
-                <li><strong>Спекулятивный актив:</strong> мем-токены привлекают инвесторов, рассчитывающих на их рост в краткосрочной перспективе, хотя это связано с высоким риском из-за нестабильности.</li>
-            </ul>
-            <p>Проект <strong>Книга Анекдотов</strong> — это своего рода локальная версия популярных международных мем-токенов, таких как Dogecoin или Pepe, но ориентированная на русскоязычную аудиторию и национальный юмор.</p>
+            <p>Описание мем-токена...</p>
         </section>
     </div>
-
-    <!-- Остальная структура страницы -->
-    <main>
-        <div class="divider"></div>
-        <section id="features">
-            <h2>Особенности Мем Токена</h2>
-            <div class="joke-container">
-                <h3>Случайный анекдот</h3>
-                <p id="joke">Загрузка анекдота...</p>
-                <p id="like-count">Лайков: 0</p>
-                <p id="dislike-count">Дизлайков: 0</p>
-                <div class="button-container">
-                    <button onclick="fetchPreviousJoke()">Предыдущий анекдот</button>
-                    <button onclick="fetchJoke()">Обновить анекдот</button>
-                    <button class="like-button" onclick="likeJoke()">Лайк 👍</button>
-                    <button class="dislike-button" onclick="dislikeJoke()">Дизлайк 👎</button>
-                </div>
-            </div>
-        </section>
-
-        <div class="divider black-divider"></div>
-
-        <section id="top10">
-            <div class="top-jokes-container">
-                <h2>Топ 10 шуток</h2>
-                <ul id="top-jokes-list" class="top-jokes-list">
-                    <!-- Список топ-10 шуток -->
-                </ul>
-            </div>
-        </section>
-
-        <footer id="community">
-            <div class="community-container">
-                <h2>Сообщества</h2>
-                <ul class="community-list">
-                    <li><a href="https://t.me/Bookofanecdotes_bot" target="_blank">Telegram</a></li>
-                    <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-                </ul>
-            </div>
-        </footer>
-    </main>
-
     <script>
+        // Функция для переключения отображения мобильного меню
         function toggleMenu() {
             const menu = document.querySelector('.mobile-menu');
             menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
         }
     </script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
 
 
 
