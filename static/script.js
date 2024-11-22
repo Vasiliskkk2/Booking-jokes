@@ -36,7 +36,7 @@ function fetchPreviousJoke() {
 // Обработка ошибок
 function handleError(message, error) {
     console.error(message, error);
-    alert(message);
+    alert(`${message} ${error?.message || "Произошла ошибка."}`);
 }
 
 // Функция для лайка анекдота с проверкой
@@ -66,25 +66,25 @@ function handleLikeDislike(endpoint, type) {
         },
         body: JSON.stringify({ joke })
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.json().then(data => {
-                alert(data.error);
-                throw new Error(data.error);
-            });
-        }
-        return response.json();
-    })
-    .then(data => {
-        document.getElementById("like-count").innerText = `Лайков: ${data.likes}`;
-        document.getElementById("dislike-count").innerText = `Дизлайков: ${data.dislikes}`;
-        fetchTopJokes(); // Обновляем топ-10 шуток после оценки
-    })
-    .catch(error => handleError(`Ошибка при ${type === "like" ? "лайке" : "дизлайке"} анекдота:`, error))
-    .finally(() => {
-        likeButton.disabled = false;
-        dislikeButton.disabled = false;
-    });
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    alert(data.error);
+                    throw new Error(data.error);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            document.getElementById("like-count").innerText = `Лайков: ${data.likes}`;
+            document.getElementById("dislike-count").innerText = `Дизлайков: ${data.dislikes}`;
+            fetchTopJokes(); // Обновляем топ-10 шуток после оценки
+        })
+        .catch(error => handleError(`Ошибка при ${type === "like" ? "лайке" : "дизлайке"} анекдота:`, error))
+        .finally(() => {
+            likeButton.disabled = false;
+            dislikeButton.disabled = false;
+        });
 }
 
 // Функция для получения топ-10 шуток
@@ -110,45 +110,47 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Анимация глаз для слежения за курсором
-document.addEventListener("mousemove", (event) => {
-    const eyes = document.querySelectorAll(".eye");
-    window.requestAnimationFrame(() => {
-        eyes.forEach((eye) => {
-            const pupil = eye.querySelector(".pupil");
-            const eyeRect = eye.getBoundingClientRect();
-            const eyeCenterX = eyeRect.left + eyeRect.width / 2;
-            const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-            const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
-            const maxOffset = eyeRect.width / 4; // Смещение адаптируется под размер глаза
-            const pupilX = Math.cos(angle) * maxOffset;
-            const pupilY = Math.sin(angle) * maxOffset;
-            pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-        });
-    });
-});
+const debounce = (func, delay) => {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+    };
+};
 
-// Адаптация на мобильных устройствах (используем событие touchmove)
-document.addEventListener("touchmove", (event) => {
-    const touch = event.touches[0];
+const moveEyes = debounce((x, y) => {
     const eyes = document.querySelectorAll(".eye");
     eyes.forEach((eye) => {
         const pupil = eye.querySelector(".pupil");
         const eyeRect = eye.getBoundingClientRect();
         const eyeCenterX = eyeRect.left + eyeRect.width / 2;
         const eyeCenterY = eyeRect.top + eyeRect.height / 2;
-        const angle = Math.atan2(touch.clientY - eyeCenterY, touch.clientX - eyeCenterX);
-        const maxOffset = eyeRect.width / 4; // Смещение адаптируется под размер глаза
+
+        const angle = Math.atan2(y - eyeCenterY, x - eyeCenterX);
+        const maxOffset = eyeRect.width / 4;
         const pupilX = Math.cos(angle) * maxOffset;
         const pupilY = Math.sin(angle) * maxOffset;
+
         pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
     });
+}, 10);
+
+document.addEventListener("mousemove", (event) => moveEyes(event.clientX, event.clientY));
+document.addEventListener("touchmove", (event) => {
+    const touch = event.touches[0];
+    moveEyes(touch.clientX, touch.clientY);
 });
 
 // Функция для переключения меню
 function toggleMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    navMenu.classList.toggle('active'); // Toggles the active class
+    const navMenu = document.querySelector(".nav-menu");
+    navMenu.classList.toggle("active");
+
+    // Accessibility improvement
+    const isExpanded = navMenu.classList.contains("active");
+    navMenu.setAttribute("aria-expanded", isExpanded.toString());
 }
+
 
 
 
