@@ -418,7 +418,7 @@ footer#community {
         display: flex;
         gap: 20px; /* Уменьшаем расстояние между глазами */
         position: absolute;
-        top: 60%; /* Сдвигаем глаза ниже */
+        top: 37%; /* Сдвигаем глаза ниже */
         left: 50%; /* Центрируем */
         transform: translate(-50%, -50%);
     }
