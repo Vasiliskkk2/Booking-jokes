@@ -419,7 +419,7 @@ footer#community {
         gap: 20px; /* Уменьшаем расстояние между глазами */
         position: absolute;
         top: 37%; /* Сдвигаем глаза ниже */
-        left: 53%; /* Центрируем */
+        left: 52%; /* Центрируем */
         transform: translate(-50%, -55%);
     }
 
