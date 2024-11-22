@@ -419,13 +419,13 @@ footer#community {
         gap: 20px; /* Уменьшаем расстояние между глазами */
         position: absolute;
         top: 37%; /* Сдвигаем глаза ниже */
-        left: 50%; /* Центрируем */
-        transform: translate(-50%, -50%);
+        left: 53%; /* Центрируем */
+        transform: translate(-50%, -55%);
     }
 
     .eye {
-        width: 60px; /* Уменьшенный размер глаз */
-        height: 60px;
+        width: 80px; /* Уменьшенный размер глаз */
+        height: 80px;
         background-color: #fff;
         border-radius: 50%;
         position: relative;
