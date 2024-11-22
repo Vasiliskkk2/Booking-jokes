@@ -66,7 +66,7 @@ header {
 
 /* Menu button style */
 .menu-button {
-    display: none; /* Скрыто по умолчанию */
+    display: none; /* Скрыта по умолчанию */
     background-color: #7289da;
     color: white;
     font-size: 16px;
@@ -281,35 +281,50 @@ footer#community {
     margin: auto;
 }
 
-/* Медиа-запрос для мобильных устройств */
+/* Изменения для мобильных устройств */
 @media (max-width: 768px) {
-    /* Уменьшение размера кнопки меню для мобильных устройств */
-    .menu-button {
-        padding: 8px 16px; /* Уменьшение отступов */
-        font-size: 14px; /* Меньший размер шрифта */
-    }
-
-    /* Настройка навигационного меню для мобильных устройств */
     .nav-menu {
-        flex-direction: column; /* Меню выстраивается по вертикали */
-        gap: 10px; /* Расстояние между элементами */
-        padding: 10px; /* Отступы внутри меню */
-        font-size: 14px; /* Меньший шрифт для ссылок */
+        display: none; /* Скрываем меню по умолчанию */
+        flex-direction: column; /* Вертикальное расположение меню */
+        gap: 10px;
+        background-color: #40444b;
+        padding: 10px;
+        border-radius: 8px;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
     }
 
-    /* Уменьшение кнопок управления анекдотами для мобильных устройств */
+    .nav-menu.active {
+        display: flex; /* Показываем меню при активации */
+    }
+
+    .menu-button {
+        display: block; /* Показываем кнопку меню */
+        background-color: #7289da;
+        color: white;
+        font-size: 14px;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .menu-button:hover {
+        background-color: #5a6eb9;
+    }
+
     .button-container button {
-        padding: 6px 12px; /* Уменьшенные отступы */
-        font-size: 14px; /* Меньший размер шрифта */
+        font-size: 14px; /* Уменьшенный размер кнопок */
+        padding: 6px 12px;
     }
 
     .joke-container {
-        width: 90%; /* Уменьшение ширины контейнера для мобильных экранов */
-        margin: 0 auto; /* Центрирование контейнера */
-    }
-
-    .button-container {
-        gap: 8px; /* Уменьшение расстояния между кнопками */
+        width: 90%; /* Адаптация ширины */
+        margin: 0 auto;
     }
 }
 
