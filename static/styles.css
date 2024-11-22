@@ -66,7 +66,7 @@ header {
 
 /* Menu button style */
 .menu-button {
-    display: none; /* Hidden by default */
+    display: none; /* Скрыто по умолчанию */
     background-color: #7289da;
     color: white;
     font-size: 16px;
@@ -79,31 +79,6 @@ header {
 
 .menu-button:hover {
     background-color: #5a6eb9;
-}
-
-/* Media query for small screens */
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none; /* Hide menu by default */
-        flex-direction: column;
-        gap: 10px;
-        background-color: #40444b;
-        padding: 10px;
-        border-radius: 8px;
-        position: absolute;
-        top: 60px;
-        right: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-    }
-
-    .nav-menu.active {
-        display: flex; /* Show menu when active */
-    }
-
-    .menu-button {
-        display: block; /* Show button on small screens */
-    }
 }
 
 /* Стили основного изображения под хедером */
@@ -305,6 +280,39 @@ footer#community {
     max-width: 600px;
     margin: auto;
 }
+
+/* Медиа-запрос для мобильных устройств */
+@media (max-width: 768px) {
+    /* Уменьшение размера кнопки меню для мобильных устройств */
+    .menu-button {
+        padding: 8px 16px; /* Уменьшение отступов */
+        font-size: 14px; /* Меньший размер шрифта */
+    }
+
+    /* Настройка навигационного меню для мобильных устройств */
+    .nav-menu {
+        flex-direction: column; /* Меню выстраивается по вертикали */
+        gap: 10px; /* Расстояние между элементами */
+        padding: 10px; /* Отступы внутри меню */
+        font-size: 14px; /* Меньший шрифт для ссылок */
+    }
+
+    /* Уменьшение кнопок управления анекдотами для мобильных устройств */
+    .button-container button {
+        padding: 6px 12px; /* Уменьшенные отступы */
+        font-size: 14px; /* Меньший размер шрифта */
+    }
+
+    .joke-container {
+        width: 90%; /* Уменьшение ширины контейнера для мобильных экранов */
+        margin: 0 auto; /* Центрирование контейнера */
+    }
+
+    .button-container {
+        gap: 8px; /* Уменьшение расстояния между кнопками */
+    }
+}
+
 
 
 
