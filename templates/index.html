@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,16 @@
             <div class="logo">
                 <h1>Book of Jokes</h1>
             </div>
-            <!-- Navigation menu with toggle button -->
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#about">О токене</a></li>
-                    <li><a href="#features">Особенности</a></li>
-                    <li><a href="#community">Сообщество</a></li>
-                    <li><a href="#top10">Топ 10 шуток</a></li>
-                    <li><a href="#buy">Купить</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#community">Community</a></li>
+                    <li><a href="#top10">Top 10 Jokes</a></li>
+                    <li><a href="#buy">Buy</a></li>
                 </ul>
             </nav>
-            <button class="menu-button" onclick="toggleMenu()">Меню</button>
+            <button class="menu-button" onclick="toggleMenu()">Menu</button>
         </div>
     </header>
 
@@ -40,31 +39,51 @@
     <main>
         <div class="content-container">
             <section id="about">
-                <h2>О Токене</h2>
-                <p><strong>Мем токен Книга Шуток</strong> — это криптовалютный проект, созданный для развлечения и популяризации интернет-шуток, анекдотов и мемов на блокчейне.</p>
-                <h3>Основные характеристики:</h3>
-                <ul>
-                    <li><strong>Фокус на юморе:</strong> проект продвигается с помощью анекдотов, шуток и мемов.</li>
-                    <li><strong>Сообщество и мем-культура:</strong> активное сообщество распространяет шутки.</li>
-                    <li><strong>Спекулятивный актив:</strong> мем-токены привлекают инвесторов, ожидающих роста.</li>
-                </ul>
-            </section>
+    <h2>Book of Jokes Meme Token</h2>
+    <p><strong>The Book of Jokes Meme Token</strong> is a cryptocurrency project designed to combine humor with blockchain technology. It provides an innovative platform for sharing laughter while exploring the exciting potential of meme-based tokens in the crypto space.</p>
+
+    <h3>What is a Meme Token?</h3>
+    <p>Meme tokens are cryptocurrencies inspired by internet memes, jokes, and cultural trends. They merge entertainment with financial technology, fostering a fun and interactive way for communities to engage with blockchain.</p>
+
+    <h3>Key Features:</h3>
+    <ul>
+        <li><strong>Blockchain-Based:</strong> Built on a secure and transparent blockchain, ensuring safe transactions.</li>
+        <li><strong>Community-Driven:</strong> Active community members contribute jokes and spread the word about the token.</li>
+        <li><strong>Entertainment Focus:</strong> Centered around sharing and creating jokes, making crypto fun and approachable.</li>
+        <li><strong>Scarcity:</strong> A limited supply of tokens creates potential for value appreciation.</li>
+        <li><strong>Social Impact:</strong> A portion of token revenues supports mental health awareness campaigns, spreading positivity and laughter globally.</li>
+    </ul>
+
+    <h3>How Does it Work?</h3>
+    <p>When users interact with the Book of Jokes platform by liking, sharing, or contributing jokes, they earn rewards in Book of Jokes Tokens. These tokens can be traded, held as investments, or used to unlock exclusive content on the platform.</p>
+
+    <h3>Why Choose Book of Jokes Meme Token?</h3>
+    <ul>
+        <li><strong>Unique Utility:</strong> The token combines humor with tangible blockchain utility, bridging entertainment and technology.</li>
+        <li><strong>Growing Ecosystem:</strong> The Book of Jokes platform features a marketplace, exclusive joke content, and leaderboards.</li>
+        <li><strong>Global Reach:</strong> Anyone, anywhere, can participate and share laughter through the platform.</li>
+    </ul>
+
+    <h3>Join the Fun!</h3>
+    <p>The Book of Jokes Meme Token isn’t just a cryptocurrency; it’s a community of humor enthusiasts who believe in the power of laughter to connect people. Whether you're a crypto investor, a joke lover, or someone looking for a unique project, there's something for everyone in the Book of Jokes ecosystem.</p>
+</section>
+
         </div>
 
         <div class="divider"></div>
 
         <section id="features">
-            <h2>Особенности Мем Токена</h2>
+            <h2>Features of the Meme Token</h2>
             <div class="joke-container">
-                <h3>Случайный анекдот</h3>
-                <p id="joke">Загрузка анекдота...</p>
-                <p id="like-count">Лайков: 0</p>
-                <p id="dislike-count">Дизлайков: 0</p>
+                <h3>Random Joke</h3>
+                <p id="joke">Loading a joke...</p>
+                <p id="like-count">Likes: 0</p>
+                <p id="dislike-count">Dislikes: 0</p>
                 <div class="button-container">
-                    <button onclick="fetchPreviousJoke()">Предыдущий анекдот</button>
-                    <button onclick="fetchJoke()">Обновить анекдот</button>
-                    <button class="like-button" onclick="likeJoke()">Лайк 👍</button>
-                    <button class="dislike-button" onclick="dislikeJoke()">Дизлайк 👎</button>
+                    <button onclick="fetchPreviousJoke()">Previous Joke</button>
+                    <button onclick="fetchJoke()">Get a New Joke</button>
+                    <button class="like-button" onclick="likeJoke()">Like 👍</button>
+                    <button class="dislike-button" onclick="dislikeJoke()">Dislike 👎</button>
                 </div>
             </div>
         </section>
@@ -73,14 +92,14 @@
 
         <section id="top10">
             <div class="top-jokes-container">
-                <h2>Топ 10 шуток</h2>
+                <h2>Top 10 Jokes</h2>
                 <ul id="top-jokes-list" class="top-jokes-list"></ul>
             </div>
         </section>
 
         <footer id="community">
             <div class="community-container">
-                <h2>Сообщества</h2>
+                <h2>Communities</h2>
                 <ul class="community-list">
                     <li><a href="https://t.me/Bookofanecdotes_bot" target="_blank">Telegram</a></li>
                     <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
@@ -92,6 +111,7 @@
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
 
 
 

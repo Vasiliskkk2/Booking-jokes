@@ -1,28 +1,38 @@
 let currentJoke = "";
 let jokeHistory = []; // Массив для хранения истории анекдотов
 let currentJokeIndex = -1; // Индекс текущего анекдота
+let userVotes = {}; // Хранилище голосов (имитируем по IP с localStorage)
 
-// Функция для получения анекдота
+// Функция для получения анекдота с JokeAPI
 function fetchJoke() {
-    fetch("/api/get_joke")
+    fetch("https://v2.jokeapi.dev/joke/Any?lang=en&format=json")
         .then(response => response.json())
         .then(data => {
-            const joke = data.joke;
-            if (!jokeHistory.includes(joke)) { // Проверка на уникальность анекдота
-                jokeHistory.push(joke);
+            let joke;
+            if (data.type === "single") {
+                joke = data.joke; // Однострочный анекдот
+            } else if (data.type === "twopart") {
+                joke = `${data.setup} ${data.delivery}`; // Двухчастный анекдот
             }
-            currentJokeIndex = jokeHistory.length - 1; // Обновляем текущий индекс
-            displayJoke(joke); // Показываем анекдот
+
+            // Если анекдота нет в истории, добавляем его
+            if (!jokeHistory.some(item => item.joke === joke)) {
+                jokeHistory.push({ joke, likes: 0, dislikes: 0 });
+            }
+
+            // Устанавливаем текущий индекс на последний
+            currentJokeIndex = jokeHistory.length - 1;
+            displayJoke(jokeHistory[currentJokeIndex]); // Показываем анекдот
         })
-        .catch(error => handleError("Ошибка при загрузке анекдота:", error));
+        .catch(error => handleError("Error loading a joke:", error));
 }
 
 // Функция для отображения анекдота на странице
-function displayJoke(joke) {
-    document.getElementById("joke").innerText = joke;
-    document.getElementById("like-count").innerText = "Лайков: 0";
-    document.getElementById("dislike-count").innerText = "Дизлайков: 0";
-    currentJoke = joke;
+function displayJoke(jokeObj) {
+    document.getElementById("joke").innerText = jokeObj.joke;
+    document.getElementById("like-count").innerText = `Likes: ${jokeObj.likes}`;
+    document.getElementById("dislike-count").innerText = `Dislikes: ${jokeObj.dislikes}`;
+    currentJoke = jokeObj;
 }
 
 // Функция для перехода к предыдущему анекдоту
@@ -30,83 +40,98 @@ function fetchPreviousJoke() {
     if (currentJokeIndex > 0) { // Проверка, если есть предыдущий анекдот
         currentJokeIndex--; // Переход к предыдущему анекдоту
         displayJoke(jokeHistory[currentJokeIndex]); // Показываем предыдущий анекдот
+    } else {
+        alert("This is the first joke.");
     }
+}
+
+// Функция для перехода к следующему анекдоту
+function fetchNextJoke() {
+    if (currentJokeIndex < jokeHistory.length - 1) {
+        currentJokeIndex++; // Переход к следующему анекдоту
+        displayJoke(jokeHistory[currentJokeIndex]); // Показываем следующий анекдот
+    } else {
+        fetchJoke(); // Загружаем новый анекдот, если достигли конца
+    }
+}
+
+// Проверка, голосовал ли пользователь за текущий анекдот
+function hasUserVoted(jokeId, type) {
+    const votes = JSON.parse(localStorage.getItem("votes") || "{}");
+    if (votes[jokeId]?.includes(type)) {
+        return true; // Пользователь уже голосовал
+    }
+    return false;
+}
+
+// Сохранение голоса пользователя
+function saveVote(jokeId, type) {
+    const votes = JSON.parse(localStorage.getItem("votes") || "{}");
+    if (!votes[jokeId]) {
+        votes[jokeId] = [];
+    }
+    votes[jokeId].push(type);
+    localStorage.setItem("votes", JSON.stringify(votes));
+}
+
+// Функция для лайка анекдота
+function likeJoke() {
+    const jokeObj = jokeHistory[currentJokeIndex];
+    const jokeId = jokeObj.joke;
+
+    if (hasUserVoted(jokeId, "like")) {
+        alert("You have already liked this joke.");
+        return;
+    }
+
+    saveVote(jokeId, "like");
+    jokeObj.likes++;
+    displayJoke(jokeObj);
+    updateTopJokes(); // Обновляем Топ-10
+}
+
+// Функция для дизлайка анекдота
+function dislikeJoke() {
+    const jokeObj = jokeHistory[currentJokeIndex];
+    const jokeId = jokeObj.joke;
+
+    if (hasUserVoted(jokeId, "dislike")) {
+        alert("You have already disliked this joke.");
+        return;
+    }
+
+    saveVote(jokeId, "dislike");
+    jokeObj.dislikes++;
+    displayJoke(jokeObj);
+    updateTopJokes(); // Обновляем Топ-10
+}
+
+// Обновление списка Топ-10 анекдотов
+function updateTopJokes() {
+    const topJokesList = document.getElementById("top-jokes-list");
+    topJokesList.innerHTML = "";
+
+    // Сортируем анекдоты по лайкам и берём топ-10
+    const topJokes = [...jokeHistory]
+        .sort((a, b) => b.likes - a.likes)
+        .slice(0, 10);
+
+    topJokes.forEach((joke, index) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${index + 1}. ${joke.joke} — Likes: ${joke.likes}, Dislikes: ${joke.dislikes}`;
+        topJokesList.appendChild(listItem);
+    });
 }
 
 // Обработка ошибок
 function handleError(message, error) {
     console.error(message, error);
-    alert(`${message} ${error?.message || "Произошла ошибка."}`);
-}
-
-// Функция для лайка анекдота с проверкой
-function likeJoke() {
-    handleLikeDislike("/api/like_joke", "like");
-}
-
-// Функция для дизлайка анекдота с проверкой
-function dislikeJoke() {
-    handleLikeDislike("/api/dislike_joke", "dislike");
-}
-
-// Универсальная функция для обработки лайков и дизлайков
-function handleLikeDislike(endpoint, type) {
-    const joke = jokeHistory[currentJokeIndex];
-    const likeButton = document.querySelector(".like-button");
-    const dislikeButton = document.querySelector(".dislike-button");
-
-    // Деактивация кнопок для предотвращения быстрого повторного нажатия
-    likeButton.disabled = true;
-    dislikeButton.disabled = true;
-
-    fetch(endpoint, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ joke })
-    })
-        .then(response => {
-            if (!response.ok) {
-                return response.json().then(data => {
-                    alert(data.error);
-                    throw new Error(data.error);
-                });
-            }
-            return response.json();
-        })
-        .then(data => {
-            document.getElementById("like-count").innerText = `Лайков: ${data.likes}`;
-            document.getElementById("dislike-count").innerText = `Дизлайков: ${data.dislikes}`;
-            fetchTopJokes(); // Обновляем топ-10 шуток после оценки
-        })
-        .catch(error => handleError(`Ошибка при ${type === "like" ? "лайке" : "дизлайке"} анекдота:`, error))
-        .finally(() => {
-            likeButton.disabled = false;
-            dislikeButton.disabled = false;
-        });
-}
-
-// Функция для получения топ-10 шуток
-function fetchTopJokes() {
-    fetch("/api/top_jokes")
-        .then(response => response.json())
-        .then(data => {
-            const topJokesList = document.getElementById("top-jokes-list");
-            topJokesList.innerHTML = "";
-            data.forEach((joke, index) => {
-                const listItem = document.createElement("li");
-                listItem.textContent = `${index + 1}. ${joke.joke} — Лайков: ${joke.likes}, Дизлайков: ${joke.dislikes}`;
-                topJokesList.appendChild(listItem);
-            });
-        })
-        .catch(error => handleError("Ошибка при получении топ-10 шуток:", error));
+    alert(`${message} ${error?.message || "An error occurred."}`);
 }
 
 // Загрузка анекдота при открытии страницы
 document.addEventListener("DOMContentLoaded", () => {
     fetchJoke();
-    fetchTopJokes();
 });
 
 // Анимация глаз для слежения за курсором
@@ -137,28 +162,6 @@ const moveEyes = debounce((x, y) => {
 
 document.addEventListener("mousemove", (event) => moveEyes(event.clientX, event.clientY));
 
-// Eye movement based on touch direction
-document.addEventListener("touchstart", (event) => {
-    handleTouchMove(event.touches[0]);
-});
-
-document.addEventListener("touchmove", (event) => {
-    handleTouchMove(event.touches[0]);
-});
-
-function handleTouchMove(touch) {
-    moveEyes(touch.clientX, touch.clientY);
-}
-
-// Функция для переключения меню
-function toggleMenu() {
-    const navMenu = document.querySelector(".nav-menu");
-    navMenu.classList.toggle("active");
-
-    // Accessibility improvement
-    const isExpanded = navMenu.classList.contains("active");
-    navMenu.setAttribute("aria-expanded", isExpanded.toString());
-}
 
 
 
