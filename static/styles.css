@@ -413,17 +413,18 @@ footer#community {
         display: flex; /* Показываем меню при активации */
     }
 
-    /* Контейнер для глаз */
+    /* Положение глаз */
     .eyes-container {
+        display: flex;
         gap: 20px; /* Уменьшаем расстояние между глазами */
-        top: 40%; /* Глаза расположены ниже, в центре экрана */
-        left: 50%; /* Центрируем контейнер глаз */
+        position: absolute;
+        top: 40%; /* Сдвигаем глаза ниже */
+        left: 50%; /* Центрируем */
         transform: translate(-50%, -50%);
     }
 
-    /* Стиль глаз */
     .eye {
-        width: 60px; /* Размер глаз уменьшен для мобильного отображения */
+        width: 60px; /* Уменьшенный размер глаз */
         height: 60px;
         background-color: #fff;
         border-radius: 50%;
@@ -431,19 +432,17 @@ footer#community {
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5); /* Тень для эффекта глубины */
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
     }
 
-    /* Стиль зрачков */
     .pupil {
-        width: 20px; /* Уменьшаем размер зрачков */
+        width: 20px; /* Уменьшенный размер зрачков */
         height: 20px;
         background-color: #000;
         border-radius: 50%;
         position: absolute;
-        transition: transform 0.1s ease-out; /* Плавное движение зрачков */
+        transition: transform 0.05s ease-out; /* Плавное движение зрачков */
     }
-}
 
     /* Стили футера */
     footer {
