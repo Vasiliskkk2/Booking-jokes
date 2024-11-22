@@ -136,10 +136,19 @@ const moveEyes = debounce((x, y) => {
 }, 10);
 
 document.addEventListener("mousemove", (event) => moveEyes(event.clientX, event.clientY));
-document.addEventListener("touchmove", (event) => {
-    const touch = event.touches[0];
-    moveEyes(touch.clientX, touch.clientY);
+
+// Eye movement based on touch direction
+document.addEventListener("touchstart", (event) => {
+    handleTouchMove(event.touches[0]);
 });
+
+document.addEventListener("touchmove", (event) => {
+    handleTouchMove(event.touches[0]);
+});
+
+function handleTouchMove(touch) {
+    moveEyes(touch.clientX, touch.clientY);
+}
 
 // Функция для переключения меню
 function toggleMenu() {
@@ -150,6 +159,7 @@ function toggleMenu() {
     const isExpanded = navMenu.classList.contains("active");
     navMenu.setAttribute("aria-expanded", isExpanded.toString());
 }
+
 
 
 
