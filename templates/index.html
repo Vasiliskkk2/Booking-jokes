@@ -5,15 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book of Jokes</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Включены все ранее описанные адаптивные стили */
+        @media (max-width: 768px) {
+            .content-container {
+                width: 90%;
+                margin: 0 auto;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            }
+            .content-container h2, .content-container h3 {
+                font-size: 20px;
+            }
+            .content-container p, .content-container li {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Хедер с кнопками -->
+    <!-- Хедер -->
     <header>
         <div class="header-container">
             <div class="logo">
                 <h1>Book of Jokes</h1>
             </div>
-            <nav>
+            <div class="menu-toggle" onclick="toggleMenu()">Меню</div>
+            <nav class="mobile-menu">
                 <ul>
                     <li><a href="#about">О токене</a></li>
                     <li><a href="#features">Особенности</a></li>
@@ -25,7 +43,7 @@
         </div>
     </header>
 
-    <!-- Блок изображения с анимированными глазами и основной картинкой под хедером -->
+    <!-- Основное изображение -->
     <div class="hero-image" style="background-image: url('https://raw.githubusercontent.com/Vasiliskkk2/bbjokes/refs/heads/main/static/images/boja.JPG');">
         <div class="eyes-container">
             <div class="eye" id="left-eye">
@@ -37,25 +55,24 @@
         </div>
     </div>
 
+    <!-- Контейнер с контентом -->
+    <div class="content-container">
+        <section id="about">
+            <h2>О Токене</h2>
+            <p><strong>Мем токен Книга Шуток</strong> — это криптовалютный проект, созданный для развлечения и популяризации интернет-шуток, анекдотов и мемов на блокчейне. Название обыгрывает слово "анекдоты", подчеркивая юмористическую направленность и акцент на локальной интернет-культуре. Эти токены объединяют пользователей вокруг весёлого контента, не претендуя на серьёзные технические инновации.</p>
+            <h3>Основные характеристики:</h3>
+            <ul>
+                <li><strong>Фокус на юморе:</strong> проект продвигается с помощью анекдотов, шуток и мемов, чтобы привлечь внимание и создать комьюнити.</li>
+                <li><strong>Сообщество и мем-культура:</strong> токен строит активное сообщество, участники которого вовлечены в обсуждения и распространение шуток.</li>
+                <li><strong>Спекулятивный актив:</strong> мем-токены привлекают инвесторов, рассчитывающих на их рост в краткосрочной перспективе, хотя это связано с высоким риском из-за нестабильности.</li>
+            </ul>
+            <p>Проект <strong>Книга Анекдотов</strong> — это своего рода локальная версия популярных международных мем-токенов, таких как Dogecoin или Pepe, но ориентированная на русскоязычную аудиторию и национальный юмор.</p>
+        </section>
+    </div>
+
+    <!-- Остальная структура страницы -->
     <main>
-        <div class="content-container">
-            <section id="about">
-                <h2>О Токене</h2>
-                <p><strong>Мем токен Книга Шуток</strong> — это криптовалютный проект, созданный для развлечения и популяризации интернет-шуток, анекдотов и мемов на блокчейне. Название обыгрывает слово "анекдоты", подчеркивая юмористическую направленность и акцент на локальной интернет-культуре. Эти токены объединяют пользователей вокруг весёлого контента, не претендуя на серьёзные технические инновации.</p>
-                <h3>Основные характеристики:</h3>
-                <ul>
-                    <li><strong>Фокус на юморе:</strong> проект продвигается с помощью анекдотов, шуток и мемов, чтобы привлечь внимание и создать комьюнити.</li>
-                    <li><strong>Сообщество и мем-культура:</strong> токен строит активное сообщество, участники которого вовлечены в обсуждения и распространение шуток.</li>
-                    <li><strong>Спекулятивный актив:</strong> мем-токены привлекают инвесторов, рассчитывающих на их рост в краткосрочной перспективе, хотя это связано с высоким риском из-за нестабильности.</li>
-                </ul>
-                <p>Проект <strong>Книга Анекдотов</strong> — это своего рода локальная версия популярных международных мем-токенов, таких как Dogecoin или Pepe, но ориентированная на русскоязычную аудиторию и национальный юмор.</p>
-            </section>
-        </div>
-
-        <!-- Темная разделительная полоса -->
         <div class="divider"></div>
-
-        <!-- Секция "Особенности" с окном парсера анекдотов -->
         <section id="features">
             <h2>Особенности Мем Токена</h2>
             <div class="joke-container">
@@ -72,20 +89,17 @@
             </div>
         </section>
 
-        <!-- Черная линия после блока анекдота -->
         <div class="divider black-divider"></div>
 
-        <!-- Окно для Топ 10 шуток -->
         <section id="top10">
             <div class="top-jokes-container">
                 <h2>Топ 10 шуток</h2>
                 <ul id="top-jokes-list" class="top-jokes-list">
-                    <!-- Список топ-10 шуток будет обновляться динамически -->
+                    <!-- Список топ-10 шуток -->
                 </ul>
             </div>
         </section>
 
-        <!-- Список сообществ в конце страницы -->
         <footer id="community">
             <div class="community-container">
                 <h2>Сообщества</h2>
@@ -97,9 +111,16 @@
         </footer>
     </main>
 
+    <script>
+        function toggleMenu() {
+            const menu = document.querySelector('.mobile-menu');
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        }
+    </script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
 
 
 
