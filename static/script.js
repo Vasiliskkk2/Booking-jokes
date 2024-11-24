@@ -163,27 +163,20 @@ const moveEyes = debounce((x, y) => {
 document.addEventListener("mousemove", (event) => moveEyes(event.clientX, event.clientY));
 
 // Управление меню для мобильных устройств
-document.addEventListener("click", (event) => {
-    const navMenu = document.querySelector(".nav-menu");
-    const menuButton = document.querySelector(".menu-button");
+const menuButton = document.querySelector(".menu-button");
+const navMenu = document.querySelector(".nav-menu");
 
-    if (navMenu && menuButton) {
-        if (navMenu.style.display === "flex" && !navMenu.contains(event.target) && !menuButton.contains(event.target)) {
-            navMenu.style.display = "none"; // Скрываем меню
-        }
-    }
+// Переключение состояния меню при клике на кнопку
+menuButton.addEventListener("click", (event) => {
+    event.stopPropagation(); // Останавливаем всплытие, чтобы меню не закрылось сразу после открытия
+    navMenu.classList.toggle("active");
 });
 
-function toggleMenu() {
-    const navMenu = document.querySelector(".nav-menu");
-    if (navMenu) {
-        navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+// Закрытие меню при клике вне его области
+document.addEventListener("click", (event) => {
+    if (!menuButton.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.remove("active");
     }
-}
-
-document.querySelector(".menu-button")?.addEventListener("click", (event) => {
-    event.stopPropagation(); // Останавливаем всплытие, чтобы не закрывать меню сразу после открытия
-    toggleMenu();
 });
 
 

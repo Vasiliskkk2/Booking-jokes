@@ -290,16 +290,16 @@ footer#community {
         display: none;
         flex-direction: column;
         gap: 10px;
-        background-color: #ffcc00; /* Светлый цвет для гармоничного меню */
+        background-color: #ffcc00;
         padding: 15px;
         border-radius: 8px;
         position: absolute;
-        top: 75px; /* Меню открывается под хедером */
+        top: 75px; /* Открытие под хедером */
         left: 0;
-        width: 100%; /* Занимает всю ширину экрана */
+        width: 100%;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         z-index: 1000;
-        animation: slideDown 0.3s ease-in-out; /* Плавное открытие */
+        animation: slideDown 0.3s ease-in-out;
     }
 
     .nav-menu ul {
@@ -350,6 +350,38 @@ footer#community {
         transform: scale(1.05);
     }
 
+    /* Центрирование "Топ 10 анекдотов" */
+    .top-jokes-container {
+        padding: 15px;
+        background-color: #fff9e6;
+        border-radius: 8px;
+        margin: 20px auto; /* Центрирование контейнера */
+        max-width: 95%; /* Оптимальная ширина */
+        text-align: center; /* Текст выровнен по центру */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .top-jokes-list {
+        list-style: none; /* Убираем маркеры списка */
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .top-jokes-list li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #fff3b0;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease;
+    }
+
+    .top-jokes-list li:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    }
+
     /* Кнопки под анекдотами */
     .button-container {
         display: flex;
@@ -361,15 +393,15 @@ footer#community {
     }
 
     .button-container button {
-        font-size: 12px; /* Уменьшенный размер шрифта */
-        padding: 6px 12px; /* Уменьшенные отступы */
-        border-radius: 5px; /* Закруглённые края */
+        font-size: 12px;
+        padding: 6px 12px;
+        border-radius: 5px;
         background-color: #ffcc00;
         color: #ffffff;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s, transform 0.1s ease-out;
-        width: 90%; /* Занимает почти всю ширину */
+        width: 90%;
     }
 
     .button-container button:hover {
@@ -406,5 +438,7 @@ footer#community {
         display: flex; /* Показываем меню при активации */
     }
 }
+
+
 
 
