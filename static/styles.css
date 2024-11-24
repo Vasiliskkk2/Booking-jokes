@@ -287,186 +287,186 @@ footer#community {
 @media (max-width: 768px) {
     /* Стили меню */
     .nav-menu {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        background-color: #ffcc00;
-        padding: 15px;
-        border-radius: 8px;
-        position: absolute;
-        top: 75px; /* Открытие под хедером */
-        left: 0;
-        width: 100%;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        animation: slideDown 0.3s ease-in-out;
+        display: none; /* Меню скрыто по умолчанию */
+        flex-direction: column; /* Элементы меню располагаются вертикально */
+        gap: 6px; /* Расстояние между элементами меню */
+        background-color: #ffcc00; /* Фон меню */
+        padding: 15px; /* Внутренние отступы для меню */
+        border-radius: 8px; /* Скругленные углы меню */
+        position: absolute; /* Абсолютное позиционирование для открытия под хедером */
+        top: 75px; /* Расположение меню под хедером */
+        left: 0; /* Прижато к левой стороне */
+        width: 100%; /* Занимает всю ширину */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Тень для визуального отделения */
+        z-index: 1000; /* Поверх всех элементов */
+        animation: slideDown 0.3s ease-in-out; /* Анимация плавного появления */
     }
 
     .nav-menu ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        width: 100%;
+        list-style: none; /* Убираем маркеры списка */
+        padding: 0; /* Убираем внутренние отступы */
+        margin: 0; /* Убираем внешние отступы */
+        width: 100%; /* Занимает всю ширину меню */
     }
 
     .nav-menu ul li {
-        display: block;
-        text-align: center;
-        width: 100%;
-        margin-bottom: 10px;
+        display: block; /* Элементы меню располагаются в блоках */
+        text-align: center; /* Выравнивание текста по центру */
+        width: 100%; /* Ширина элемента занимает всю строку */
+        margin-bottom: 6px; /* Расстояние между элементами списка */
     }
 
     .nav-menu ul li a {
-        display: block;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: bold;
-        padding: 10px;
-        border-radius: 6px;
-        background-color: #2c2f33;
-        font-size: 14px;
-        transition: background-color 0.3s, color 0.3s, transform 0.2s;
+        display: block; /* Ссылки занимают всю ширину элемента */
+        text-decoration: none; /* Убираем подчеркивание */
+        color: #ffffff; /* Цвет текста */
+        font-weight: bold; /* Жирный текст */
+        padding: 10px; /* Внутренние отступы внутри ссылок */
+        border-radius: 6px; /* Скругленные углы кнопок */
+        background-color: #2c2f33; /* Фон кнопки */
+        font-size: 14px; /* Размер текста */
+        transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
     }
 
     .nav-menu ul li a:hover {
-        background-color: #ff9900;
-        color: #ffffff;
+        background-color: #ff9900; /* Цвет фона при наведении */
+        color: #ffffff; /* Цвет текста при наведении */
     }
 
     .menu-button {
-        display: block;
-        background-color: #ffcc00;
-        color: white;
-        font-size: 14px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
+        display: block; /* Кнопка меню видима */
+        background-color: #ffcc00; /* Фон кнопки */
+        color: white; /* Цвет текста кнопки */
+        font-size: 14px; /* Размер текста кнопки */
+        padding: 10px 20px; /* Внутренние отступы кнопки */
+        border: none; /* Убираем границу */
+        border-radius: 5px; /* Скругленные углы кнопки */
+        cursor: pointer; /* Курсор меняется на указатель */
+        transition: background-color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
     }
 
     .menu-button:hover {
-        background-color: #ff9900;
+        background-color: #ff9900; /* Цвет кнопки при наведении */
     }
 
     /* Контейнер глаз */
     .eyes-container {
-        display: flex;
-        justify-content: center; /* Центрируем контейнер по горизонтали */
+        display: flex; /* Отображение глаз в строку */
+        justify-content: center; /* Центрирование контейнера глаз */
         gap: 20px; /* Расстояние между глазами */
-        position: absolute;
-        top: 38%; /* Сдвиг глаз немного ниже */
-        left: 50%;
-        transform: translate(-50%, -50%); /* Центрируем относительно контейнера */
+        position: absolute; /* Абсолютное позиционирование */
+        top: 35%; /* Расположение глаз ниже центра */
+        left: 51%; /* Глаза расположены в центре экрана */
+        transform: translate(-50%, -50%); /* Центрирование относительно контейнера */
     }
 
     .eye {
-        width: 80px; /* Уменьшенный размер глаз */
+        width: 80px; /* Размер глаза */
         height: 80px;
-        background-color: #fff;
-        border-radius: 50%;
-        position: relative;
+        background-color: #fff; /* Белый фон глаз */
+        border-radius: 50%; /* Круглая форма глаз */
+        position: relative; /* Для внутреннего позиционирования зрачков */
         display: flex;
         justify-content: center;
         align-items: center;
-        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5); /* Тень внутри глаз */
     }
 
     .pupil {
-        width: 20px; /* Уменьшенный размер зрачков */
+        width: 20px; /* Размер зрачка */
         height: 20px;
-        background-color: #000;
-        border-radius: 50%;
-        position: absolute;
+        background-color: #000; /* Черный цвет зрачков */
+        border-radius: 50%; /* Круглая форма зрачков */
+        position: absolute; /* Абсолютное позиционирование внутри глаз */
         transition: transform 0.05s ease-out; /* Плавное движение зрачков */
     }
 
     /* Joke container */
     .joke-container {
-        width: 95%;
-        padding: 15px;
-        background-color: #fff9e6;
-        border-radius: 8px;
-        margin: 15px auto;
-        text-align: center;
+        width: 95%; /* Ширина контейнера */
+        padding: 15px; /* Внутренние отступы */
+        background-color: #fff9e6; /* Фон контейнера */
+        border-radius: 8px; /* Скругленные углы */
+        margin: 15px auto; /* Центрирование и отступы */
+        text-align: center; /* Выравнивание текста по центру */
     }
 
     /* Кнопки под анекдотами */
     .button-container {
         display: flex;
-        flex-direction: column; /* Кнопки идут в вертикальном ряду */
-        gap: 10px;
+        flex-direction: column; /* Кнопки идут вертикально */
+        gap: 10px; /* Расстояние между кнопками */
         justify-content: center;
-        margin-top: 15px;
-        align-items: center;
+        margin-top: 15px; /* Отступ сверху */
+        align-items: center; /* Центрирование кнопок */
     }
 
     .button-container button {
-        font-size: 12px;
-        padding: 6px 12px;
-        border-radius: 5px;
-        background-color: #ffcc00;
-        color: #ffffff;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.1s ease-out;
-        width: 90%;
+        font-size: 12px; /* Размер текста */
+        padding: 6px 12px; /* Внутренние отступы */
+        border-radius: 5px; /* Скругленные углы */
+        background-color: #ffcc00; /* Фон кнопок */
+        color: #ffffff; /* Цвет текста кнопок */
+        border: none; /* Убираем границу */
+        cursor: pointer; /* Указатель мыши при наведении */
+        transition: background-color 0.3s, transform 0.1s ease-out; /* Плавные переходы при наведении */
+        width: 90%; /* Ширина кнопок */
     }
 
     .button-container button:hover {
-        background-color: #ff9900;
+        background-color: #ff9900; /* Цвет кнопки при наведении */
     }
 
     .button-container button:active {
-        transform: scale(0.95);
+        transform: scale(0.95); /* Небольшое уменьшение кнопки при нажатии */
     }
 
     /* Список топ-10 анекдотов */
     .top-jokes-container {
-        padding: 20px;
-        background-color: #fff3b0;
-        border-radius: 8px;
-        margin: 15px auto;
-        max-width: 95%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        text-align: center; /* Центрируем текст */
+        padding: 20px; /* Внутренние отступы */
+        background-color: #fff3b0; /* Фон контейнера */
+        border-radius: 8px; /* Скругленные углы */
+        margin: 15px auto; /* Центрирование контейнера */
+        max-width: 95%; /* Ширина контейнера */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тень для отделения */
+        text-align: center; /* Центрирование текста */
     }
 
     .top-jokes-container h2 {
-        color: #ff9900;
-        margin-bottom: 15px;
-        font-size: 18px;
+        color: #ff9900; /* Цвет заголовка */
+        margin-bottom: 15px; /* Отступ снизу */
+        font-size: 18px; /* Размер текста заголовка */
     }
 
     .top-jokes-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: center; /* Центрируем список */
+        list-style: none; /* Убираем маркеры списка */
+        padding: 0; /* Убираем внутренние отступы */
+        margin: 0; /* Убираем внешние отступы */
+        text-align: center; /* Центрирование списка */
     }
 
     .top-jokes-list li {
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #fff9e6;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px; /* Расстояние между элементами списка */
+        padding: 10px; /* Внутренние отступы элемента */
+        background-color: #fff9e6; /* Фон элемента */
+        border-radius: 8px; /* Скругленные углы */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тень для отделения */
     }
 
     .top-jokes-list li:hover {
-        transform: scale(1.02);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        transform: scale(1.02); /* Увеличение элемента при наведении */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15); /* Усиление тени при наведении */
     }
 
     /* Анимация открытия меню */
     @keyframes slideDown {
         from {
-            opacity: 0;
-            transform: translateY(-20px);
+            opacity: 0; /* Начальная прозрачность */
+            transform: translateY(-20px); /* Смещение вверх */
         }
         to {
-            opacity: 1;
-            transform: translateY(0);
+            opacity: 1; /* Конечная прозрачность */
+            transform: translateY(0); /* Конечное положение */
         }
     }
 
@@ -474,6 +474,7 @@ footer#community {
         display: flex; /* Показываем меню при активации */
     }
 }
+
 
 
 
