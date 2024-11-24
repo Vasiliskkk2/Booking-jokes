@@ -301,23 +301,13 @@ footer#community {
 
 /* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
-    body {
-        font-family: 'Open Sans', Arial, sans-serif; /* Основной шрифт для текста */
-        background-color: #fff9e6; /* Цвет фона для мобильных устройств */
-    }
-
-    h1, h2, h3 {
-        font-family: 'Lobster', cursive; /* Креативный шрифт для заголовков */
-        color: #ff9900; /* Цвет заголовков */
-    }
-
     /* Стили меню */
     .nav-menu {
         display: none; /* Меню скрыто по умолчанию */
         flex-direction: column; /* Элементы меню располагаются вертикально */
-        gap: 2px; /* Расстояние между элементами меню */
+        gap: 5px; /* Уменьшенное расстояние между элементами меню */
         background-color: #ffcc00; /* Фон меню */
-        padding: 15px; /* Внутренние отступы для меню */
+        padding: 10px; /* Внутренние отступы для меню */
         border-radius: 8px; /* Скругленные углы меню */
         position: absolute; /* Абсолютное позиционирование для открытия под хедером */
         top: 75px; /* Расположение меню под хедером */
@@ -326,7 +316,6 @@ footer#community {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Тень для визуального отделения */
         z-index: 1000; /* Поверх всех элементов */
         animation: slideDown 0.3s ease-in-out; /* Анимация плавного появления */
-        font-family: 'Open Sans', Arial, sans-serif; /* Шрифт для меню */
     }
 
     .nav-menu ul {
@@ -340,7 +329,7 @@ footer#community {
         display: block; /* Элементы меню располагаются в блоках */
         text-align: center; /* Выравнивание текста по центру */
         width: 100%; /* Ширина элемента занимает всю строку */
-        margin-bottom: 1px; /* Минимальное расстояние между элементами списка */
+        margin-bottom: 4px; /* Уменьшенное расстояние между элементами списка */
     }
 
     .nav-menu ul li a {
@@ -348,7 +337,7 @@ footer#community {
         text-decoration: none; /* Убираем подчеркивание */
         color: #ffffff; /* Цвет текста */
         font-weight: bold; /* Жирный текст */
-        padding: 10px; /* Внутренние отступы внутри ссылок */
+        padding: 8px; /* Внутренние отступы внутри ссылок */
         border-radius: 6px; /* Скругленные углы кнопок */
         background-color: #2c2f33; /* Фон кнопки */
         font-size: 14px; /* Размер текста */
@@ -370,7 +359,6 @@ footer#community {
         border-radius: 5px; /* Скругленные углы кнопки */
         cursor: pointer; /* Курсор меняется на указатель */
         transition: background-color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
-        font-family: 'Open Sans', Arial, sans-serif; /* Шрифт для кнопки */
     }
 
     .menu-button:hover {
@@ -461,7 +449,6 @@ footer#community {
     }
 
     .top-jokes-container h2 {
-        font-family: 'Lobster', cursive; /* Креативный шрифт для заголовка */
         color: #ff9900; /* Цвет заголовка */
         margin-bottom: 15px; /* Отступ снизу */
         font-size: 18px; /* Размер текста заголовка */
@@ -503,5 +490,6 @@ footer#community {
         display: flex; /* Показываем меню при активации */
     }
 }
+
 
 
