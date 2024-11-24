@@ -1,3 +1,6 @@
+/* Подключение Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@400;700&display=swap');
+
 /* Основные стили, сброс отступов и внутренних полей */
 * {
     margin: 0;
@@ -11,6 +14,7 @@ body {
     background-color: #fff9e6;
     overflow-y: scroll;
     scroll-behavior: smooth;
+    font-family: 'Poppins', Arial, sans-serif; /* Основной шрифт */
 }
 
 /* Стили для фиксированного хедера */
@@ -33,7 +37,8 @@ header {
 }
 
 .logo h1 {
-    font-size: 24px;
+    font-family: 'Lobster', cursive; /* Креативный шрифт для логотипа */
+    font-size: 36px; /* Увеличенный размер шрифта */
     font-weight: bold;
     color: #ffffff;
 }
@@ -53,6 +58,7 @@ header {
 .nav-menu ul li a {
     text-decoration: none;
     color: #ffffff;
+    font-family: 'Poppins', Arial, sans-serif; /* Основной шрифт */
     font-weight: bold;
     padding: 8px 15px;
     border-radius: 4px;
@@ -137,9 +143,11 @@ header {
     max-width: 800px;
     color: #333333;
     line-height: 1.6;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 h2, h3 {
+    font-family: 'Lobster', cursive; /* Креативный шрифт для заголовков */
     color: #ff9900;
     margin-bottom: 10px;
 }
@@ -183,10 +191,12 @@ ul li {
     max-width: 600px;
     text-align: center;
     color: #333333;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 .joke-container h3 {
     margin-bottom: 15px;
+    font-family: 'Lobster', cursive; /* Шрифт для заголовков внутри контейнера */
     font-size: 20px;
     color: #ff9900;
 }
@@ -233,6 +243,7 @@ ul li {
     margin-right: auto;
     text-align: left;
     color: #333333;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 footer#community {
@@ -241,6 +252,7 @@ footer#community {
     padding: 20px 0;
     text-align: center;
     margin-top: 30px;
+    font-family: 'Poppins', Arial, sans-serif;
 }
 
 .community-container {
@@ -283,15 +295,29 @@ footer#community {
     color: #ffd966;
 }
 
+
+/* Подключение Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Open+Sans:wght@400;700&display=swap');
+
 /* Медиа-запрос для мобильных устройств */
 @media (max-width: 768px) {
+    body {
+        font-family: 'Open Sans', Arial, sans-serif; /* Основной шрифт для текста */
+        background-color: #fff9e6; /* Цвет фона для мобильных устройств */
+    }
+
+    h1, h2, h3 {
+        font-family: 'Lobster', cursive; /* Креативный шрифт для заголовков */
+        color: #ff9900; /* Цвет заголовков */
+    }
+
     /* Стили меню */
     .nav-menu {
         display: none; /* Меню скрыто по умолчанию */
         flex-direction: column; /* Элементы меню располагаются вертикально */
-        gap: 1px; /* Минимальное расстояние между элементами меню */
+        gap: 2px; /* Расстояние между элементами меню */
         background-color: #ffcc00; /* Фон меню */
-        padding: 10px; /* Уменьшенные внутренние отступы */
+        padding: 15px; /* Внутренние отступы для меню */
         border-radius: 8px; /* Скругленные углы меню */
         position: absolute; /* Абсолютное позиционирование для открытия под хедером */
         top: 75px; /* Расположение меню под хедером */
@@ -300,6 +326,7 @@ footer#community {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Тень для визуального отделения */
         z-index: 1000; /* Поверх всех элементов */
         animation: slideDown 0.3s ease-in-out; /* Анимация плавного появления */
+        font-family: 'Open Sans', Arial, sans-serif; /* Шрифт для меню */
     }
 
     .nav-menu ul {
@@ -321,10 +348,10 @@ footer#community {
         text-decoration: none; /* Убираем подчеркивание */
         color: #ffffff; /* Цвет текста */
         font-weight: bold; /* Жирный текст */
-        padding: 8px; /* Уменьшенные внутренние отступы */
+        padding: 10px; /* Внутренние отступы внутри ссылок */
         border-radius: 6px; /* Скругленные углы кнопок */
         background-color: #2c2f33; /* Фон кнопки */
-        font-size: 13px; /* Уменьшенный размер текста */
+        font-size: 14px; /* Размер текста */
         transition: background-color 0.3s, color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
     }
 
@@ -343,6 +370,7 @@ footer#community {
         border-radius: 5px; /* Скругленные углы кнопки */
         cursor: pointer; /* Курсор меняется на указатель */
         transition: background-color 0.3s, transform 0.2s; /* Плавные переходы при наведении */
+        font-family: 'Open Sans', Arial, sans-serif; /* Шрифт для кнопки */
     }
 
     .menu-button:hover {
@@ -353,7 +381,7 @@ footer#community {
     .eyes-container {
         display: flex; /* Отображение глаз в строку */
         justify-content: center; /* Центрирование контейнера глаз */
-        gap: 15px; /* Уменьшенное расстояние между глазами */
+        gap: 21px; /* Расстояние между глазами */
         position: absolute; /* Абсолютное позиционирование */
         top: 35%; /* Расположение глаз ниже центра */
         left: 53%; /* Глаза расположены в центре экрана */
@@ -433,6 +461,7 @@ footer#community {
     }
 
     .top-jokes-container h2 {
+        font-family: 'Lobster', cursive; /* Креативный шрифт для заголовка */
         color: #ff9900; /* Цвет заголовка */
         margin-bottom: 15px; /* Отступ снизу */
         font-size: 18px; /* Размер текста заголовка */
@@ -474,4 +503,5 @@ footer#community {
         display: flex; /* Показываем меню при активации */
     }
 }
+
 
