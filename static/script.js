@@ -162,6 +162,31 @@ const moveEyes = debounce((x, y) => {
 
 document.addEventListener("mousemove", (event) => moveEyes(event.clientX, event.clientY));
 
+// Управление меню для мобильных устройств
+document.addEventListener("click", (event) => {
+    const navMenu = document.querySelector(".nav-menu");
+    const menuButton = document.querySelector(".menu-button");
+
+    if (navMenu && menuButton) {
+        if (navMenu.style.display === "flex" && !navMenu.contains(event.target) && !menuButton.contains(event.target)) {
+            navMenu.style.display = "none"; // Скрываем меню
+        }
+    }
+});
+
+function toggleMenu() {
+    const navMenu = document.querySelector(".nav-menu");
+    if (navMenu) {
+        navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+    }
+}
+
+document.querySelector(".menu-button")?.addEventListener("click", (event) => {
+    event.stopPropagation(); // Останавливаем всплытие, чтобы не закрывать меню сразу после открытия
+    toggleMenu();
+});
+
+
 
 
 
