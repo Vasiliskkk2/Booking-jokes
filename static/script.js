@@ -177,7 +177,48 @@ document.addEventListener("click", (event) => {
     if (!menuButton.contains(event.target) && !navMenu.contains(event.target)) {
         navMenu.classList.remove("active");
     }
+// копирование
+document.addEventListener("DOMContentLoaded", () => {
+    const textElement = document.getElementById("copyable-text");
+    const copyButton = document.getElementById("copy-button");
+
+    copyButton.addEventListener("click", () => {
+        const textToCopy = textElement.textContent;
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => alert("Text copied to clipboard!"))
+                .catch((err) => {
+                    console.error("Clipboard API failed:", err);
+                    fallbackCopyTextToClipboard(textToCopy);
+                });
+        } else {
+            fallbackCopyTextToClipboard(textToCopy);
+        }
+    });
+
+    function fallbackCopyTextToClipboard(text) {
+        const textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.top = "-9999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+
+        try {
+            document.execCommand("copy");
+            alert("Text copied to clipboard!");
+        } catch (err) {
+            console.error("Fallback copy failed:", err);
+        }
+
+        document.body.removeChild(textArea);
+    }
 });
+
+});
+
 
 
 

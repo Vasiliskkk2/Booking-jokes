@@ -294,6 +294,49 @@ footer#community {
 .community-list li a:hover {
     color: #ffd966;
 }
+/* Стили для текста в хедере */
+.header-text {
+    font-size: 18px; /* Размер текста */
+    color: #ffffff; /* Цвет текста */
+    margin-left: auto; /* Отодвинуть текст в правую сторону */
+    margin-right: 15px; /* Отступ справа */
+    font-family: 'Poppins', Arial, sans-serif; /* Основной шрифт */
+    text-align: right; /* Выравнивание по правому краю */
+    white-space: nowrap; /* Не переносить текст */
+    overflow: hidden; /* Обрезка текста, если он выходит за пределы */
+    text-overflow: ellipsis; /* Троеточие, если текст слишком длинный */
+}
+/* Стили для текста при наведении */
+.header-text:hover {
+    cursor: pointer; /* Курсор в виде руки */
+    color: #ffffff; /* Изменение цвета текста */
+    background-color: rgba(255, 255, 255, 0.2); /* Легкий фон */
+    padding: 3px; /* Внутренние отступы для выделения */
+    border-radius: 5px; /* Скругление краев */
+    transition: all 0.3s ease; /* Плавный переход эффектов */
+}
+/* Контейнер для текста и кнопки */
+.header-text-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Расстояние между элементами */
+}
+
+/* Стили для надписи "Адрес токена" */
+.token-label {
+    font-size: 18px;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: #ffcc00;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin-left: 208px; /* Сдвиг вправо */
+    margin-top: 1px;  /* Сдвиг вниз */
+}
+
 
 
 /* Подключение Google Fonts */
@@ -488,6 +531,7 @@ footer#community {
     .nav-menu.active {
         display: flex; /* Показываем меню при активации */
     }
+
 }
 
 
