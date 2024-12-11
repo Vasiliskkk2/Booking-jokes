@@ -786,14 +786,7 @@ header {
     align-items: center;
 }
 
-/* Контейнер для глаз */
-.eyes-container {
-    display: flex;
-    gap: 47px;
-    position: absolute;
-    top: 33%;
-    left: 51%;
-    transform: translate(-52%, -49%);
+
 }
 
 /* Медиа-запросы */
