@@ -546,147 +546,6 @@ footer#community {
     --transition: 0.3s ease;
 }
 
-/* Общие сбросы */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: var(--font-main);
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-/* Хедер */
-header {
-    background-color: var(--primary-color);
-    color: white;
-    padding: var(--padding);
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-.logo h1 {
-    font-family: var(--font-heading);
-    font-size: 24px;
-    color: white;
-    margin: 0;
-}
-
-.nav-menu {
-    display: flex;
-    gap: 15px;
-}
-
-.nav-menu ul {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    padding: 0;
-    margin: 0;
-}
-
-.nav-menu ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color var(--transition);
-}
-
-.nav-menu ul li a:hover {
-    background-color: white;
-    color: var(--secondary-color);
-}
-
-/* Кнопка меню для мобильных устройств */
-.menu-button {
-    display: none;
-    background-color: var(--secondary-color);
-    color: white;
-    font-size: 16px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.menu-button:hover {
-    background-color: white;
-    color: var(--secondary-color);
-}
-
-/* Мобильное меню */
-@media (max-width: 768px) {
-    .menu-button {
-        display: block;
-    }
-
-    .nav-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        background-color: var(--primary-color);
-        width: 100%;
-        padding: var(--padding);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-    }
-
-    .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-menu ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-menu ul li a {
-        font-size: 16px;
-        text-align: center;
-    }
-
-    .logo {
-        text-align: center;
-        width: 100%;
-    }
-
-    .buy-button {
-        margin-top: 15px;
-    }
-}
-
-/* Кнопка "Buy" */
-.buy-button {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 10px 15px;
-    font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color var(--transition);
-}
-
-.buy-button:hover {
-    background-color: white;
-    color: var(--secondary-color);
-}
-
-
 /* Основные стили, сброс отступов и внутренних полей */
 * {
     margin: 0;
@@ -786,7 +645,14 @@ header {
     align-items: center;
 }
 
-
+/* Контейнер для глаз */
+.eyes-container {
+    display: flex;
+    gap: 47px;
+    position: absolute;
+    top: 33%;
+    left: 51%;
+    transform: translate(-52%, -49%);
 }
 
 /* Медиа-запросы */
